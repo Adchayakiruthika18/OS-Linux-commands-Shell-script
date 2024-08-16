@@ -312,10 +312,7 @@ sed -n -e '$p' file23
 ## OUTPUT
 ```
 
-
-
-
-
+```
 sed  -e 's/Ram/Sita/' file23
 ## OUTPUT
 
