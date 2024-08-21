@@ -46,7 +46,7 @@ cat < file1
 chanchal singhvi
 c.k. shukla
 s.n. dasgupta
-sumit chakrobarty
+sumit chakrobartychanchal singhvi
 ```
 cat < file2
 ## OUTPUT
@@ -66,7 +66,7 @@ file1 file2 differ: char 1, line 1
 comm file1 file2
 ## OUTPUT
 ```
-        anil aggarwal
+anil aggarwal
         barun sengupta
         c.k. shukla
 chanchal singhvi
@@ -311,75 +311,130 @@ sed -n -e '3p' file23
 sed -n -e '$p' file23
 ## OUTPUT
 ```
-
+1001 | Ram | 10000 | HR
 ```
 sed  -e 's/Ram/Sita/' file23
 ## OUTPUT
-
-
-
+```
+1001 | Sita | 10000 | HR
+1001 | Sita | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Sita | 10000 | HR
+```
 sed  -e '2s/Ram/Sita/' file23
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Sita | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
+```
 sed  '/tom/s/5000/6000/' file23
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  6000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
+```
 sed -n -e '1,5p' file23
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+```
 sed -n -e '2,/Joe/p' file23
 ## OUTPUT
-
-
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+```
 sed -n -e '/tom/,/Joe/p' file23
 ## OUTPUT
-
-
-
+```
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+```
 seq 10 
 ## OUTPUT
-
-
-
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
 seq 10 | sed -n '4,6p'
 ## OUTPUT
-
-
-
+```
+4
+5
+6
+```
 seq 10 | sed -n '2,~4p'
 ## OUTPUT
-
-
-
+```
+2
+3
+4
+```
 seq 3 | sed '2a hello'
 ## OUTPUT
-
-
-
+```
+1
+2
+hello
+3
+```
 seq 2 | sed '2i hello'
 ## OUTPUT
-
-
+```
+1
+hello
+2
+```
 seq 10 | sed '2,9c hello'
 ## OUTPUT
-
-
+```
+1
+hello
+10
+```
 sed -n '2,4{s/^/$/;p}' file23
 ## OUTPUT
-
-
-
+```
+$1001 | Ram | 10000 | HR
+$1002 | tom |  5000 | Admin
+$1003 | Joe |  7000 | Developer
+```
 sed -n '2,4{s/$/*/;p}' file23
-
-
+## OUTPUT
+```
+1001 | Ram | 10000 | HR*
+1002 | tom |  5000 | Admin*
+1003 | Joe |  7000 | Developer*
+```
 #Sorting File content
 cat > file21
 ```
@@ -391,8 +446,13 @@ cat > file21
 ``` 
 sort file21
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1004 | Sit |  7000 | Dev
+1005 | Sam |  5000 | HR
+```
 cat > file22
 ```
 1001 | Ram | 10000 | HR
@@ -404,9 +464,13 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+```
 #Using tr command
 
 cat file23 | tr [:lower:] [:upper:]
@@ -427,35 +491,51 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
-
- 
+```
+www.yahoo.com
+www.google.com
+www.mrcet....com
+``` 
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
-
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
-
+```
+bench.py
+file21
+file22
+file23
+hello.c
+hello.js
+newfile
+readme.txt
+urllist.txt
+```
 mkdir backupdir
  
 mv backup.tar backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
-
-
+```
+tar: can't open 'backup.tar': No such file or directory
+```
 tar -xvf backup.tar
 ## OUTPUT
-
+```
+tar: can't open 'backup.tar': No such file or directory
+```
 gzip backup.tar
 
 ls .gz
 ## OUTPUT
- 
+
 gunzip backup.tar.gz
 ## OUTPUT
 
@@ -567,14 +647,16 @@ echo "$val1 is less than $val2"
 fi
 ```
 ##OUTPUT
-
-
-
+```
+baseball is less than hockey
+```
 chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-
+```
+You are the owner of the /etc/passwd file
+```
 
 # check file ownership
 cat < psswdperm.sh 
@@ -601,6 +683,10 @@ fi
  ```
 ./psswdperm.sh
 ## OUTPUT
+```
+"/root The object exists, is it a file?"
+"No,/root it is not a file!"
+```
 
 # check if with file location
 cat>ifnested.sh 
@@ -647,9 +733,11 @@ fi
 
 ./ifnested.sh 
 ## OUTPUT
-
-
-
+```
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
+```
 # using numeric test comparisons
 cat > iftest.sh 
 ```bash
@@ -691,7 +779,10 @@ $ chmod 755 iftest.sh
  
 $ ./iftest.sh 
 ##OUTPUT
-
+```
+“The test value 10 is greater than 5”
+“The values are different”
+```
 # check if a file
 cat > ifnested.sh 
 ```bash
@@ -740,7 +831,11 @@ $ chmod 755 ifnested.sh
  
 $ ./ifnested.sh 
 ##OUTPUT
-
+```
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
+```
 # looking for a possible value using elif
 cat elifcheck.sh 
 ```bash
@@ -768,8 +863,10 @@ $ chmod 755 elifcheck.sh
  
 $ ./elifcheck.sh 
 ## OUTPUT
-
-
+```
+./elifcheck.sh: line 1: #!/bin/bash: No such file or directory
+Sorry, you are not allowed here
+```
 # testing compound comparisons
 cat> ifcompound.sh 
 ```bash
@@ -784,7 +881,10 @@ fi
 $ chmod 755 ifcompound.sh
 $ ./ifcompound.sh 
 ## OUTPUT
-
+```
+./ifcompound.sh: line 1: #!/bin/bash: No such file or directory
+The file exists and you can write to it
+```
 # using the case command
 cat >casecheck.sh 
 ```bash
@@ -803,7 +903,10 @@ esac
 $ chmod 755 casecheck.sh 
  
 $ ./casecheck.sh 
- 
+## OUTPUT
+```
+Sorry, you are not allowed here
+```
 cat > whiletest
 ```bash
 #!/bin/bash
@@ -818,8 +921,19 @@ done
 $ chmod 755 whiletest.sh
  
 $ ./whiletest.sh
- 
- 
+##OUTPUT
+```
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1 
+``` 
 cat untiltest.sh 
 ```bash
 \#using the until command
@@ -831,9 +945,14 @@ var1=$[ $var1 - 25 ]
 done
 ``` 
 $ chmod 755 untiltest.sh
- 
- 
- 
+## OUTPUT
+```
+ ./untiltest.sh: line 1: #using: command not found
+100
+75
+50
+25
+ ```
 cat forin1.sh 
 ```bash
 \#!/bin/bash
@@ -845,8 +964,17 @@ done
  ```
  
 $ chmod 755 forin1.sh
- 
- 
+## OUTPUT
+```
+./forin1.sh: line 1: #!/bin/bash: No such file or directory
+./forin1.sh: line 2: #basic: command not found
+The next state is Alabama
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+```
 cat forin2.sh 
 ```bash
 \#!/bin/bash
@@ -871,7 +999,12 @@ done
 $ chmod 755 forin2.sh
  
 $ ./forin2.sh 
- 
+## OUTPUT
+```
+“word:I”
+“word:dont know if thisll”
+“word:work”
+ ```
 cat forin3.sh 
 ```bash
 \#!/bin/bash
@@ -893,8 +1026,15 @@ echo The next state is $test
 done
 ```
 $ chmod 755 forin1.sh
-
 ## OUTPUT
+```
+The next state is Alabama
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+```
 cat forinfile.sh 
 ```bash
 #!/bin/bash
