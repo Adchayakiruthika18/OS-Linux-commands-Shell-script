@@ -548,8 +548,12 @@ echo 'echo Hello World‘; exit 0 >> my-script.sh
 chmod 755 my-script.sh
 ./my-script.sh
 ## OUTPUT
-
- 
+```
+hello in this world
+i cant stop
+for this non stop movement
+stop
+``` 
 cat << stop > herecheck.txt
 ```
 hello in this world
@@ -560,8 +564,11 @@ stop
 
 cat herecheck.txt
 ## OUTPUT
-
-
+```
+hello in this world
+i cant stop
+for this non stop movement
+```
 cat < scriptest.sh 
 ```bash
 \#!/bin/sh
@@ -598,26 +605,51 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-
- 
+```
+./scriptest.sh: line 1: #!/bin/sh: No such file or directory
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $\# is  1#
+The $$ is  14337
+    PID TTY          TIME CMD
+  13614 pts/1    00:00:00 bash
+  14337 pts/1    00:00:00 bash
+  14340 pts/1    00:00:00 ps
+```
 ls file1
 ## OUTPUT
-
+```
+file1
+```
 echo $?
 ## OUTPUT 
+```
+0
+```
+ech0 $?
+## OUTPUT
+```
+1
+```
 ./one
 bash: ./one: Permission denied
- 
 echo $?
 ## OUTPUT 
- 
+```
+0
+``` 
 abcd
  
 echo $?
  ## OUTPUT
-
-
- 
+```
+127
+```
 # mis-using string comparisons
 
 cat < strcomp.sh 
@@ -1056,8 +1088,15 @@ Bhadrachalam
 Khammam
 
 ## OUTPUT
-
-
+```
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+```
 cat forctype.sh 
 ```bash
 #!/bin/bash
@@ -1070,7 +1109,13 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype.sh 
 ## OUTPUT
-
+```
+The value is i is 1
+The value is i is 2
+The value is i is 3
+The value is i is 4
+The value is i is 5
+```
 cat forctype1.sh 
 ```bash
 #!/bin/bash
@@ -1083,7 +1128,13 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype1.sh 
 ## OUTPUT
-
+```
+1 - 5
+2 - 4
+3 - 3
+4 - 2
+5 - 1
+```
 cat fornested1.sh 
 ```bash
 #!/bin/bash
@@ -1101,8 +1152,20 @@ $ chmod 755 fornested1.sh
  
 $ ./fornested1.sh 
  ## OUTPUT
-
- 
+```
+Starting loop 1:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting Loop 2:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting Loop 3:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+```
 cat forbreak.sh 
 ```bash
 #!/bin/bash
@@ -1118,7 +1181,11 @@ done
 echo "The for loop is completed“
 ```
 ## OUTPUT
-
+```
+Iteration number: 1
+Iteration number: 2
+The for loop is completed
+```
 $ chmod 755 forbreak.sh
  
 $ ./forbreak.sh 
@@ -1143,7 +1210,6 @@ $ chmod 755 forcontinue.sh
  
 $ ./forcontinue.sh 
 ## OUTPUT
- 
 cat exread.sh 
 ```bash
 #!/bin/bash
@@ -1157,8 +1223,10 @@ $ chmod 755 exread.sh
  
 $ ./exread.sh 
 ## OUTPUT
-
-
+```
+Enter your name: Aaron
+Hello Aaron, welcome to my program. 
+```
  cat exread1.sh
 ```bash
 #!/bin/bash
@@ -1169,9 +1237,10 @@ echo "Hello $name, welcome to my program. “
 $ chmod 755 exread1.sh 
 
 ## OUTPUT
-
-
-
+```
+Enter your name: Aaron
+Hello Aaron, welcome to my program. 	
+```
 $ ./exread1.sh 
  
 cat funcex.sh
@@ -1191,11 +1260,14 @@ fi
 ```
 ## OUTPUT
  ./funcex.sh 
-
- 
+```
+Usage: badtest1 a b
+```
  ./funcex.sh 1 2
-
- 
+## OUTPUT
+```
+The result is 2
+``` 
 cat argshift.sh
 ```bash
 #!/bin/bash 
@@ -1208,7 +1280,11 @@ $ chmod 777 argshift.sh
 
 ## OUTPUT
 $ ./argshift.sh 1 2 3
- 
+```
+1
+2
+3
+```
  cat argshift1.sh
 ```bash
  #/bin/bash 
@@ -1225,7 +1301,11 @@ done
 $ chmod 777 argshift.sh
 ## OUTPUT
 $ ./argshift.sh 1 2 3
- 
+```
+1
+2
+3
+``` 
 cat argshift.sh
 ```bash
 #!/bin/bash 
@@ -1238,8 +1318,21 @@ set +x
 ```
 ## OUTPUT
  ./argshift.sh 1 2 3
- 
- 
+ ```
++ ((  3  ))
++ echo 1 
+1
++ shift
++ ((  2  ))
++ echo 2
+2
++ shift
++ ((  1  ))
++ echo 3
++ shift
++ ((  0  ))
++ set +x
+```
 cat > nc.awk
 ```bash
 BEGIN{}
@@ -1269,7 +1362,21 @@ ubcdfghj
 ```
 awk -f nc.awk data.dat
 ## OUTPUT 
- 
+```
+7         bcdfghj
+8	  abcdfghj
+7	  bcdfghj
+8  	  ebcdfghj
+7	  bcdfghhj
+8	  ibcdfghj
+7	  bcdfghj
+8	  obcdfghj
+7	  bcdfghj
+8 	  ubcdfghj
+total characters 75
+Number of Lines are 10
+No of Words count: 1
+``` 
 cat > palindrome.sh
 ```bash
 #num=545
@@ -1296,7 +1403,18 @@ else
 fi
 ```
 ## OUTPUT 
+```
+locathost:~# chmod 755 palindrome.sh
+locathost:~# ./palindrome.sh
+Enter the number
+21
+Number is NOT palindrome
 
-
+locathost:~# chmod 755 palindrome.sh
+locathost:~# ./palindrome.sh
+Enter the number
+33
+Number is palindrome
+```
 # RESULT:
 The Commands are executed successfully.
